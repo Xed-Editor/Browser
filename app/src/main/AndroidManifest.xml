@@ -19,12 +19,12 @@
         <!-- minimum version code of xed-editor this plugin can be installed on  -->
         <meta-data
             android:name="minXedVersionCode"
-            android:value="55" />
+            android:value="58" />
 
         <!-- version code of xed-editor that the sdk.jar is made from  -->
         <meta-data
             android:name="targetXedVersionCode"
-            android:value="55" />
+            android:value="58" />
 
 
     </application>

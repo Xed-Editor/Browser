@@ -19,9 +19,11 @@ import com.rk.controlpanel.ControlItem
 import com.rk.extension.Extension
 import com.rk.extension.ExtensionAPI
 import com.rk.file_wrapper.FileWrapper
+import com.rk.libcommons.DefaultScope
 import com.rk.libcommons.child
 import com.rk.libcommons.createFileIfNot
 import com.rk.libcommons.localDir
+import com.rk.libcommons.runOnUiThread
 import com.rk.libcommons.toast
 import com.rk.pluginApi.PluginApi
 import com.rk.xededitor.BuildConfig
@@ -117,14 +119,17 @@ class Main : ExtensionAPI() {
 //            PluginApi.openRegisteredTab(id = tabId, tabName = tabName)
 //        }))
 
-        MainActivity.activityRef.get()?.menu?.apply {
-            val browserItem = add("Browser")
-            browserItem.setIcon(android.R.drawable.ic_menu_compass)
-            browserItem.setOnMenuItemClickListener {
-                PluginApi.openRegisteredTab(id = tabId, tabName = tabName)
-                true
+        runOnUiThread{
+            MainActivity.activityRef.get()?.menu?.apply {
+                val browserItem = add("Browser")
+                browserItem.setIcon(android.R.drawable.ic_menu_compass)
+                browserItem.setOnMenuItemClickListener {
+                    PluginApi.openRegisteredTab(id = tabId, tabName = tabName)
+                    true
+                }
             }
         }
+
 
     }
 
